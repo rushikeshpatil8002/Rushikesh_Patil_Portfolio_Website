@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Rushikesh Patil | Python Full Stack Developer</title>
+
+  <meta name="description"
+    content="Rushikesh Patil's portfolio - Python Full Stack Developer skilled in Python, Django, FastAPI, React.js, SQL and REST APIs.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    :root {
+      --bg: #0b0b14;
+      --card: #131321;
+      --text: #f5f5ff;
+      --muted: #a5a4bc;
+      --accent: #9b87ff;
+      --border: rgba(255, 255, 255, .10);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 11, 20, .94);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      min-height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 21px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .brand span,
+    .accent {
+      color: var(--accent);
+    }
+
+    .nav {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      color: var(--muted);
+      font-size: 13px;
+      transition: color .2s;
+    }
+
+    .nav a:hover,
+    .social-link:hover {
+      color: var(--accent);
+    }
+
+    .socials {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .social-link {
+      color: #d9d6ff;
+      font-size: 13px;
+      font-weight: 700;
+      transition: color .2s;
+    }
+
+    .hero {
+      padding: 100px 0 85px;
+      background:
+        radial-gradient(ellipse at 75% 20%, rgba(116, 84, 255, .15), transparent 45%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.5fr .8fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1.15;
+      margin: 18px 0;
+      letter-spacing: -2px;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 650px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 25px 0;
+    }
+
+    .badge {
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, .04);
+      padding: 7px 13px;
+      border-radius: 30px;
+      font-size: 12px;
+      color: #e0dcff;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 21px;
+      border-radius: 9px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: transform .2s, background .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .primary {
+      background: var(--accent);
+      color: #100d24;
+    }
+
+    .ghost {
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, .04);
+    }
+
+    .hero-card {
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid var(--border);
+      border-radius: 25px;
+      background: linear-gradient(145deg, #19182c, #10101a);
+      padding: 30px;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 125px;
+      height: 125px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #9b87ff, #5b48c9);
+      color: white;
+      font-size: 40px;
+      font-weight: 800;
+      box-shadow: 0 0 45px rgba(155, 135, 255, .22);
+      margin-bottom: 20px;
+    }
+
+    .hero-card h2 {
+      font-size: 20px;
+    }
+
+    .hero-card p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    .section {
+      padding: 75px 0;
+    }
+
+    .section h2 {
+      font-size: 32px;
+      margin-bottom: 12px;
+      letter-spacing: -.7px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      margin-bottom: 32px;
+      max-width: 760px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 25px;
+      transition: transform .2s, border-color .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(155, 135, 255, .45);
+    }
+
+    .card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .card p {
+      color: #cfcedd;
+      font-size: 14px;
+      margin-top: 12px;
+    }
+
+    .card ul {
+      padding-left: 20px;
+      margin-top: 12px;
+      color: #cfcedd;
+      font-size: 14px;
+    }
+
+    .card li {
+      margin-bottom: 7px;
+    }
+
+    .project-tag {
+      display: inline-block;
+      color: var(--accent);
+      background: rgba(155, 135, 255, .10);
+      border-radius: 20px;
+      padding: 5px 10px;
+      font-size: 11px;
+      margin-bottom: 13px;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 16px;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .skills-showcase {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      margin-top: 28px;
+    }
+
+    .skill-category {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+
+    .skill-category-title {
+      color: #aaa4d3;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 43px;
+      padding: 0 15px;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      background: rgba(255, 255, 255, .035);
+      color: #e8e6f0;
+      font-size: 13px;
+      font-weight: 600;
+      transition: .2s;
+    }
+
+    .skill-pill:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      background: rgba(155, 135, 255, .09);
+    }
+
+    .skill-pill img {
+      width: 19px;
+      height: 19px;
+      object-fit: contain;
+    }
+
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 30px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .contact-links a {
+      border: 1px solid var(--border);
+      padding: 10px 15px;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .contact-links a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .site-footer {
+      padding: 25px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 850px) {
+      .header-inner {
+        padding: 15px 0;
+        flex-wrap: wrap;
+      }
+
+      .nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 16px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .hero-card {
+        min-height: 250px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 65px 0;
+      }
+
+      .section {
+        padding: 55px 0;
+      }
+
+      .section h2 {
+        font-size: 27px;
+      }
+
+      .brand {
+        font-size: 18px;
+      }
+
+      .socials {
+        gap: 9px;
+      }
+
+      .social-link {
+        font-size: 11px;
+      }
+
+      .nav {
+        gap: 12px;
+      }
+
+      .nav a {
+        font-size: 12px;
+      }
+
+      .skill-pill {
+        min-height: 40px;
+        padding: 0 12px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a href="#home" class="brand">
+        Rushikesh <span>Patil</span>
+      </a>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="socials">
+        <a class="social-link" href="https://github.com/rushikeshpatil8002" target="_blank"
+          rel="noopener noreferrer">GitHub</a>
+
+        <a class="social-link" href="https://www.linkedin.com/in/rushikesh-patil-41612025a" target="_blank"
+          rel="noopener noreferrer">LinkedIn</a>
+
+        <a class="social-link" href="https://www.instagram.com/rushikeshpatil8002/" target="_blank"
+          rel="noopener noreferrer">Instagram</a>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+
+        <div class="hero-content">
+          <p class="eyebrow">Welcome to my portfolio</p>
+
+          <h1>
+            Hi, I'm <span class="accent">Rushikesh Patil</span>
+          </h1>
+
+          <h2 style="font-size:22px; margin-bottom:15px;">
+            Python Full Stack Developer
+          </h2>
+
+          <p class="lead">
+            I am a Computer Science graduate interested in
+            building web applications using Python, Django,
+            FastAPI, React.js and SQL databases. I enjoy learning
+            new technologies, solving problems and developing
+            practical software solutions.
+          </p>
+
+          <div class="hero-badges">
+            <span class="badge">Python</span>
+            <span class="badge">Django</span>
+            <span class="badge">FastAPI</span>
+            <span class="badge">React.js</span>
+            <span class="badge">REST APIs</span>
+            <span class="badge">SQL</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#projects">View My Projects</a>
+            <a class="btn ghost" href="#contact">Connect With Me</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <img class="profile-photo" src="./photo.jpg" alt="Rushikesh Patil">
+
+          <h2>Rushikesh Patil</h2>
+
+          <p>Python Full Stack Developer</p>
+          <p>Computer Science Graduate</p>
+
+          <div class="contact-links">
+            <a href="https://github.com/rushikeshpatil8002" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+
+            <a href="https://www.linkedin.com/in/rushikesh-patil-41612025a" target="_blank"
+              rel="noopener noreferrer">LinkedIn ↗</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+
+        <h2>About <span class="accent">Me</span></h2>
+
+        <p class="section-intro">
+          I am a Computer Science graduate with an interest in
+          Python-based backend development and full-stack web
+          application development. I have exposure to building
+          application features, working with databases and
+          integrating REST APIs. I am continuously improving my
+          development skills through practical learning and projects.
+        </p>
+
+        <div class="grid">
+          <article class="card">
+            <h3>Backend Development</h3>
+            <p>
+              Working with Python, Django, FastAPI, REST APIs,
+              authentication and database integration.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Frontend Development</h3>
+            <p>
+              Building responsive interfaces using React.js,
+              JavaScript, HTML5, CSS3 and Bootstrap.
+            </p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section">
+      <div class="container">
+
+        <h2>Education</h2>
+
+        <div class="grid">
+          <article class="card">
+            <h3>B.Tech – Computer Science and Engineering</h3>
+
+            <p class="muted">
+              SVERI's College of Engineering, Pandharpur
+            </p>
+
+            <p>
+              CGPA: 8.45
+            </p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="container">
+
+        <h2>My <span class="accent">Projects</span></h2>
+
+        <p class="section-intro">
+          Selected projects related to web development,
+          application development and security.
+        </p>
+
+        <div class="grid">
+
+          <article class="card">
+            <span class="project-tag">Full Stack Development</span>
+
+            <h3>SmartBank Customer Management System</h3>
+
+            <p>
+              A customer management application concept for
+              managing customer profiles, account information,
+              transactions and account services.
+            </p>
+
+            <p>
+              <strong>Technologies:</strong>
+              Python, Django, React.js, PostgreSQL,
+              REST APIs and Bootstrap.
+            </p>
+
+            <a class="project-link" href="https://github.com/rushikeshpatil8002" target="_blank"
+              rel="noopener noreferrer">
+              GitHub Profile ↗
+            </a>
+          </article>
+
+          <article class="card">
+            <span class="project-tag">Web Security</span>
+
+            <h3>Web Application Vulnerability Assessment</h3>
+
+            <p>
+              A security dashboard project focused on identifying
+              common web application vulnerabilities and
+              presenting security findings.
+            </p>
+
+            <p>
+              <strong>Technologies:</strong>
+              Python, Fastapi, MySQL and OWASP concepts.
+            </p>
+
+            <a class="project-link" href="https://github.com/rushikeshpatil8002" target="_blank"
+              rel="noopener noreferrer">
+              GitHub Profile ↗
+            </a>
+          </article>
+
+          <article class="card">
+            <span class="project-tag">Web Application</span>
+
+            <h3>Job Matching System</h3>
+
+            <p>
+              A web application concept for matching candidate
+              skills with job requirements and helping users
+              explore relevant opportunities.
+            </p>
+
+            <p>
+              <strong>Technologies:</strong>
+              Python, Fastapi, Django, React.js and SQL.
+            </p>
+
+            <a class="project-link" href="https://github.com/rushikeshpatil8002" target="_blank"
+              rel="noopener noreferrer">
+              GitHub Profile ↗
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <div class="container">
+
+        <h2>Technical <span class="accent">Skills</span></h2>
+
+        <p class="section-intro">
+          Technologies and tools relevant to my Python Full Stack
+          Developer profile.
+        </p>
+
+        <div class="skills-showcase">
+
+          <div class="skill-category">
+            <h3 class="skill-category-title">Programming Languages</h3>
+
+            <div class="skill-pills">
+              <div class="skill-pill">
+                <img src="https://cdn.simpleicons.org/python/3776AB" alt="">
+                Python
+              </div>
+
+              <div class="skill-pill">
+                <img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="">
+                JavaScript
+              </div>
+
+              <div class="skill-pill">SQL</div>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="skill-category-title">Frontend Development</h3>
+
+            <div class="skill-pills">
+              <div class="skill-pill">
+                <img src="https://cdn.simpleicons.org/html5/E34F26" alt="">
+                HTML5
+              </div>
+
+              <div class="skill-pill">
+                <img src="https://cdn.simpleicons.org/css/1572B6" alt="">
+                CSS3
+              </div>
+
+              <div class="skill-pill">
+                <img src="https://cdn.simpleicons.org/react/61DAFB" alt="">
+                React.js
+              </div>
+
+              <div class="skill-pill">
+                <img src="https://cdn.simpleicons.org/bootstrap/7952B3" alt="">
+                Bootstrap
+              </div>
+
+              <div class="skill-pill">React Hooks</div>
+              <div class="skill-pill">React Router</div>
+              <div class="skill-pill">Material UI</div>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="skill-category-title">Backend Development</h3>
+
+            <div class="skill-pills">
+              <div class="skill-pill">
+                <img src="https://cdn.simpleicons.org/django/092E20" alt="">
+                Django
+              </div>
+
+              <div class="skill-pill">
+                <img src="https://cdn.simpleicons.org/fastapi/009688" alt="">
+                FastAPI
+              </div>
+
+              <div class="skill-pill">
+                <img src="https://cdn.simpleicons.org/flask/FFFFFF" alt="">
+                Flask
+              </div>
+
+              <div class="skill-pill">CRUD Operations</div>
+              <div class="skill-pill">API Integration</div>
+              <div class="skill-pill">JWT Authentication</div>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="skill-category-title">Databases</h3>
+
+            <div class="skill-pills">
+              <div class="skill-pill">
+                <img src="https://cdn.simpleicons.org/postgresql/4169E1" alt="">
+                PostgreSQL
+              </div>
+
+              <div class="skill-pill">
+                <img src="https://cdn.simpleicons.org/mysql/4479A1" alt="">
+                MySQL
+              </div>
+
+              <div class="skill-pill">
+                <img src="https://cdn.simpleicons.org/mongodb/47A248" alt="">
+                MongoDB
+              </div>
+
+              <div class="skill-pill">SQLite</div>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="skill-category-title">Cloud & Deployment</h3>
+
+            <div class="skill-pills">
+              <div class="skill-pill">
+                <img src="https://cdn.simpleicons.org/amazonaws/FF9900" alt="">
+                AWS Cloud
+              </div>
+
+              <div class="skill-pill">Cloud Fundamentals</div>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="skill-category-title">Tools & Concepts</h3>
+
+            <div class="skill-pills">
+              <div class="skill-pill">
+                <img src="https://cdn.simpleicons.org/git/F05032" alt="">
+                Git
+              </div>
+
+              <div class="skill-pill">
+                <img src="https://cdn.simpleicons.org/github/FFFFFF" alt="">
+                GitHub
+              </div>
+
+              <div class="skill-pill">
+                <img src="https://cdn.simpleicons.org/postman/FF6C37" alt="">
+                Postman
+              </div>
+
+              <div class="skill-pill">REST APIs</div>
+              <div class="skill-pill">OOP</div>
+              <div class="skill-pill">DBMS</div>
+              <div class="skill-pill">DSA Fundamentals</div>
+              <div class="skill-pill">Agile</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="container">
+
+        <h2>Let's <span class="accent">Connect</span></h2>
+
+        <div class="contact-card">
+          <p class="section-intro" style="margin-bottom:0">
+            I am interested in Python Developer, Django Backend
+            Developer and Python Full Stack Developer opportunities.
+            Feel free to connect with me through my profiles below.
+          </p>
+
+          <div class="contact-links">
+
+            <a href="https://github.com/rushikeshpatil8002" target="_blank" rel="noopener noreferrer">
+              GitHub ↗
+            </a>
+
+            <a href="https://www.linkedin.com/in/rushikesh-patil-41612025a" target="_blank" rel="noopener noreferrer">
+              LinkedIn ↗
+            </a>
+
+            <a href="https://www.instagram.com/rushikeshpatil8002/" target="_blank" rel="noopener noreferrer">
+              Instagram ↗
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        © <span id="year"></span> Rushikesh Patil.
+        Python Full Stack Developer Portfolio.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+
+</html>
